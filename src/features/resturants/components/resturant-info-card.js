@@ -16,7 +16,7 @@ import {
 	SectionEnd,
 } from "./restaurant-info-card.styles";
 
-export const RestaurantInfoCard = ({ restaurant = {} }) => {
+export const RestaurantInfoCard = ({ restaurant = {}, id }) => {
 	const {
 		name = "Some Restaurant",
 		icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
@@ -35,7 +35,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
 		<RestaurantCard style={styles.restaurantCard} elevation={5}>
 			<RestaurantCardCover source={{ uri: photos[0] }} style={styles.cardImage} />
 			<Info>
-				<Text variant="label">{name}</Text>
+				<Text variant="label">{`${name} ${id}`}</Text>
 				<Section>
 					<Rating>
 						{ratingArray.map((_, i) => (
