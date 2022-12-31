@@ -1,8 +1,0 @@
-{
-	"extends": "@react-native-community",
-	"rules": {
-		"avoidEscape": 0,
-		"linebreak-style": ["error", process.env.NODE_ENV === 'prod' ? "unix" : "windows"],
-		"quotes": [2, "double"]
-	}
-}

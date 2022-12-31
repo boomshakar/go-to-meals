@@ -10,6 +10,7 @@ import { ThemeProvider } from "styled-components";
 import { Text } from "./src/components/typography/text.component";
 import { RestaurantsScreen } from "./src/features/resturants/screens/resturants.screen";
 import { theme } from "./src/infrastructure/theme";
+import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 import { SafeArea } from "./src/utils/safe-area.component";
 
 const Tab = createBottomTabNavigator();
@@ -55,15 +56,17 @@ export default function App() {
 	return (
 		<>
 			<ThemeProvider theme={theme}>
-				<PaperProvider>
-					<NavigationContainer>
-						<Tab.Navigator screenOptions={createScreenOptions}>
-							<Tab.Screen name="Restaurants" component={RestaurantsScreen} />
-							<Tab.Screen name="Map" component={Map} />
-							<Tab.Screen name="Settings" component={Settings} />
-						</Tab.Navigator>
-					</NavigationContainer>
-				</PaperProvider>
+				<RestaurantsContextProvider>
+					<PaperProvider>
+						<NavigationContainer>
+							<Tab.Navigator screenOptions={createScreenOptions}>
+								<Tab.Screen name="Restaurants" component={RestaurantsScreen} />
+								<Tab.Screen name="Map" component={Map} />
+								<Tab.Screen name="Settings" component={Settings} />
+							</Tab.Navigator>
+						</NavigationContainer>
+					</PaperProvider>
+				</RestaurantsContextProvider>
 			</ThemeProvider>
 			<ExpoStatusBar style="auto" />
 		</>

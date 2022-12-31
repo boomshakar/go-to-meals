@@ -32,7 +32,11 @@
 	"devDependencies": {
 		"@babel/core": "^7.12.9",
 		"@react-native-community/eslint-config": "^3.2.0",
-		"eslint": "^8.30.0",
+		"@typescript-eslint/eslint-plugin": "^5.47.1",
+		"@typescript-eslint/parser": "^5.47.1",
+		"eslint": "^7.32.0 || ^8.2.0",
+		"eslint-plugin-react": "^7.31.11",
+		"eslint-plugin-react-hooks": "^4.6.0",
 		"prettier": "^2.8.1"
 	},
 	"resolutions": {
