@@ -1,6 +1,6 @@
 import { createStackNavigator, TransitionPresets } from "@react-navigation/stack";
 import React from "react";
-import { Search } from "../../features/resturants/components/search.component";
+import { RestaurantDetailScreen } from "../../features/resturants/screens/restaurant-detail.screen";
 import { RestaurantsScreen } from "../../features/resturants/screens/resturants.screen";
 
 const RestaurantStack = createStackNavigator();
@@ -11,7 +11,7 @@ export const RestaurantsNavigator = () => {
 			<RestaurantStack.Screen name="RestaurantLists" component={RestaurantsScreen} />
 			<RestaurantStack.Screen
 				name="RestaurantDetail"
-				component={Search}
+				component={RestaurantDetailScreen}
 				options={{ gestureEnabled: true, gestureResponseDistance: 350, ...TransitionPresets.ModalPresentationIOS }}
 			/>
 		</RestaurantStack.Navigator>
