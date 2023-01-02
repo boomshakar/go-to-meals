@@ -10,6 +10,7 @@ import { ThemeProvider } from "styled-components";
 import { Text } from "./src/components/typography/text.component";
 import { RestaurantsScreen } from "./src/features/resturants/screens/resturants.screen";
 import { theme } from "./src/infrastructure/theme";
+import { LocationContextProvider } from "./src/services/location/location.context";
 import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 import { SafeArea } from "./src/utils/safe-area.component";
 
@@ -56,17 +57,19 @@ export default function App() {
 	return (
 		<>
 			<ThemeProvider theme={theme}>
-				<RestaurantsContextProvider>
-					<PaperProvider>
-						<NavigationContainer>
-							<Tab.Navigator screenOptions={createScreenOptions}>
-								<Tab.Screen name="Restaurants" component={RestaurantsScreen} />
-								<Tab.Screen name="Map" component={Map} />
-								<Tab.Screen name="Settings" component={Settings} />
-							</Tab.Navigator>
-						</NavigationContainer>
-					</PaperProvider>
-				</RestaurantsContextProvider>
+				<LocationContextProvider>
+					<RestaurantsContextProvider>
+						<PaperProvider>
+							<NavigationContainer>
+								<Tab.Navigator screenOptions={createScreenOptions}>
+									<Tab.Screen name="Restaurants" component={RestaurantsScreen} />
+									<Tab.Screen name="Map" component={Map} />
+									<Tab.Screen name="Settings" component={Settings} />
+								</Tab.Navigator>
+							</NavigationContainer>
+						</PaperProvider>
+					</RestaurantsContextProvider>
+				</LocationContextProvider>
 			</ThemeProvider>
 			<ExpoStatusBar style="auto" />
 		</>
