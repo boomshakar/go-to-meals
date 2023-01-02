@@ -2,6 +2,7 @@ import { Lato_400Regular, useFonts as useLato } from "@expo-google-fonts/lato";
 import { Oswald_400Regular, useFonts as useOswald } from "@expo-google-fonts/oswald";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import React from "react";
+import "react-native-gesture-handler";
 import { Provider as PaperProvider } from "react-native-paper";
 import { ThemeProvider } from "styled-components";
 import { AppNavigator } from "./src/infrastructure/navigation/app.navigation";
