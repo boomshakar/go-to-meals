@@ -3,8 +3,8 @@ import { FlatList } from "react-native";
 import { ActivityIndicator, MD2Colors } from "react-native-paper";
 import styled from "styled-components/native";
 import { Spacer } from "../../../components/spacer/spacer.component";
+import { SafeArea } from "../../../components/utility/safe-area.component";
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
-import { SafeArea } from "../../../utils/safe-area.component";
 import { RestaurantInfoCard } from "../components/resturant-info-card";
 import { Search } from "../components/search.component";
 
