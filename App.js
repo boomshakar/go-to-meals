@@ -6,7 +6,7 @@ import "react-native-gesture-handler";
 import { Provider as PaperProvider } from "react-native-paper";
 import { ThemeProvider } from "styled-components";
 import { initFirebase } from "./firebaseConfig";
-import { AppNavigator } from "./src/infrastructure/navigation/app.navigation";
+import { Navigation } from "./src/infrastructure/navigation";
 import { theme } from "./src/infrastructure/theme";
 import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
 import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
@@ -14,6 +14,7 @@ import { LocationContextProvider } from "./src/services/location/location.contex
 import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 
 //initialize firebase configuration
+// initializeApp(firebaseConfig);
 initFirebase();
 
 export default function App() {
@@ -36,7 +37,7 @@ export default function App() {
 						<LocationContextProvider>
 							<RestaurantsContextProvider>
 								<PaperProvider>
-									<AppNavigator />
+									<Navigation />
 								</PaperProvider>
 							</RestaurantsContextProvider>
 						</LocationContextProvider>
