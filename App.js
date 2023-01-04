@@ -7,6 +7,7 @@ import { Provider as PaperProvider } from "react-native-paper";
 import { ThemeProvider } from "styled-components";
 import { AppNavigator } from "./src/infrastructure/navigation/app.navigation";
 import { theme } from "./src/infrastructure/theme";
+import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
 import { LocationContextProvider } from "./src/services/location/location.context";
 import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 
@@ -25,13 +26,15 @@ export default function App() {
 	return (
 		<>
 			<ThemeProvider theme={theme}>
-				<LocationContextProvider>
-					<RestaurantsContextProvider>
-						<PaperProvider>
-							<AppNavigator />
-						</PaperProvider>
-					</RestaurantsContextProvider>
-				</LocationContextProvider>
+				<FavouritesContextProvider>
+					<LocationContextProvider>
+						<RestaurantsContextProvider>
+							<PaperProvider>
+								<AppNavigator />
+							</PaperProvider>
+						</RestaurantsContextProvider>
+					</LocationContextProvider>
+				</FavouritesContextProvider>
 			</ThemeProvider>
 			<ExpoStatusBar style="auto" />
 		</>
