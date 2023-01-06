@@ -9,9 +9,6 @@ import { initFirebase } from "./firebaseConfig";
 import { Navigation } from "./src/infrastructure/navigation";
 import { theme } from "./src/infrastructure/theme";
 import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
-import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
-import { LocationContextProvider } from "./src/services/location/location.context";
-import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 
 //initialize firebase configuration
 // initializeApp(firebaseConfig);
@@ -33,15 +30,9 @@ export default function App() {
 		<>
 			<ThemeProvider theme={theme}>
 				<AuthenticationContextProvider>
-					<FavouritesContextProvider>
-						<LocationContextProvider>
-							<RestaurantsContextProvider>
-								<PaperProvider>
-									<Navigation />
-								</PaperProvider>
-							</RestaurantsContextProvider>
-						</LocationContextProvider>
-					</FavouritesContextProvider>
+					<PaperProvider>
+						<Navigation />
+					</PaperProvider>
 				</AuthenticationContextProvider>
 			</ThemeProvider>
 			<ExpoStatusBar style="auto" />

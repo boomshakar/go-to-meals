@@ -15,7 +15,7 @@ export const AuthenticationContextProvider = ({ children }) => {
 		if (user) {
 			setUser(user);
 		} else {
-			setUser(null);
+			//do nothing
 		}
 	});
 
@@ -59,6 +59,7 @@ export const AuthenticationContextProvider = ({ children }) => {
 		signOut(auth)
 			.then(() => {
 				// Sign-out successful.
+				setUser(null);
 			})
 			.catch((error) => {
 				const errorMessage = error.message;
