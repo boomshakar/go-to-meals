@@ -1,4 +1,4 @@
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import React, { createContext, useState } from "react";
 import { loginRequest, signUpRequest } from "./authentication.service";
 
@@ -11,12 +11,21 @@ export const AuthenticationContextProvider = ({ children }) => {
 
 	const auth = getAuth();
 
-	const onLogin = (email, password) => {
+	onAuthStateChanged(auth, (user) => {
+		if (user) {
+			setUser(user);
+		} else {
+			setUser(null);
+		}
+	});
+
+	const onLogin = (email, password, _navigation) => {
 		setIsLoading(true);
 		loginRequest(auth, email, password)
 			.then((userCredential) => {
 				const user = userCredential.user;
 				setUser(user);
+				// navigation.navigate("RestaurantLists");
 			})
 			.catch((error) => {
 				const errorMessage = error.message;
@@ -46,6 +55,17 @@ export const AuthenticationContextProvider = ({ children }) => {
 			.finally(() => setIsLoading(false));
 	};
 
+	const onLogout = () => {
+		signOut(auth)
+			.then(() => {
+				// Sign-out successful.
+			})
+			.catch((error) => {
+				const errorMessage = error.message;
+				setError(errorMessage);
+			});
+	};
+
 	return (
 		<AuthenticationContext.Provider
 			value={{
@@ -54,6 +74,7 @@ export const AuthenticationContextProvider = ({ children }) => {
 				error,
 				onLogin,
 				onRegister,
+				onLogout,
 			}}
 		>
 			{children}

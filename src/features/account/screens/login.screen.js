@@ -13,7 +13,7 @@ import {
 	Title,
 } from "../components/account.styles";
 
-export const LoginScreen = () => {
+export const LoginScreen = ({ navigation }) => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const { onLogin, error, isLoading } = useContext(AuthenticationContext);
@@ -55,6 +55,11 @@ export const LoginScreen = () => {
 					)}
 				</Spacer>
 			</AccountContainer>
+			<Spacer size="large">
+				<AuthButton mode="contained" onPress={() => navigation.goBack()}>
+					Back
+				</AuthButton>
+			</Spacer>
 		</AccountBackground>
 	);
 };

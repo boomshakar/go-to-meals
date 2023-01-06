@@ -22,7 +22,14 @@ module.exports = {
 		// "no-empty-function": "off",
 		// "react/display-name": "off",
 		"react/prop-types": "off",
-		"no-unused-vars": 1,
+		// "no-unused-vars": 1,
+		"no-unused-vars": [
+			"warn",
+			{
+				argsIgnorePattern: "^_",
+				varsIgnorePattern: "^_",
+			},
+		],
 	},
 	settings: {
 		react: {
